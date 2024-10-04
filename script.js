@@ -14,8 +14,18 @@ function calculateTip() {
     const tipSelect = document.getElementById('tip');
     let tipPercentage;
 
+    if (isNaN(billAmount) || billAmount < 0) {
+        alert("Te rog introdu o sumă validă (nu poate fi negativă).");
+        return;
+    }
+
     if (tipSelect.value === 'custom') {
         tipPercentage = parseFloat(document.getElementById('customTip').value) / 100;
+
+        if (isNaN(tipPercentage) || tipPercentage < 0) {
+            alert("Te rog introdu un procentaj valid (nu poate fi negativ).");
+            return;
+        }
     } else {
         tipPercentage = parseFloat(tipSelect.value);
     }
